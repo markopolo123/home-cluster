@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-services
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - git:
+        repoURL: https://github.com/markopolo123/home-cluster.git
+        revision: HEAD
+        directories:
+          - path: cluster-services/secrets/*
+          - path: cluster-services/storage/*

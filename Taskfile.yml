@@ -1,0 +1,14 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  init-argocd:
+    cmds:
+      - kubectl create namespace argocd
+      - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    silent: true
+  sync-apps:
+    cmds:
+      - kubectl apply -f clusterservices.yaml
+    silent: true
