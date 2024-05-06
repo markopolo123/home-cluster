@@ -1,0 +1,28 @@
+helm install \
+cert-manager jetstack/cert-manager \
+--namespace cert-manager \
+--version v1.12.0 \
+--set "extraArgs={--feature-gates=ExperimentalGatewayAPISupport=true}"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: jetstack
+    targetRevision: v1.14.5
+    repoURL: https://charts.jetstack.io
+    helm:
+      releaseName: cert-manager
+      valueFiles:
+        - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
