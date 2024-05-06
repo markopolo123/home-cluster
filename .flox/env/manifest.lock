@@ -6,8 +6,14 @@
       "_1password": {
         "pkg-path": "_1password"
       },
+      "cilium-cli": {
+        "pkg-path": "cilium-cli"
+      },
       "go-task": {
         "pkg-path": "go-task"
+      },
+      "k9s": {
+        "pkg-path": "k9s"
       },
       "kubectl": {
         "pkg-path": "kubectl"
@@ -75,6 +81,34 @@
         },
         "priority": 5
       },
+      "cilium-cli": {
+        "attr-path": [
+          "legacyPackages",
+          "aarch64-darwin",
+          "cilium-cli"
+        ],
+        "info": {
+          "broken": false,
+          "description": "CLI to install, manage & troubleshoot Kubernetes clusters running Cilium",
+          "license": "Apache-2.0",
+          "pname": "cilium-cli",
+          "unfree": false,
+          "version": "0.15.12"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1712735478,
+            "narHash": "sha256-EV0bJ+VlG93/4nLYjFy5nvDPP/vB2ZoWYJX2AzI/QHM=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "a48721e9b7a55253eb0a4d79b6806e97f11a9c77",
+            "type": "github"
+          },
+          "fingerprint": "ccdc45283fab60b0b21d81dc8228d35b6f60b33b7e4b8fcf616d97e8606b1299",
+          "url": "github:NixOS/nixpkgs/a48721e9b7a55253eb0a4d79b6806e97f11a9c77"
+        },
+        "priority": 5
+      },
       "go-task": {
         "attr-path": [
           "legacyPackages",
@@ -88,6 +122,34 @@
           "pname": "go-task",
           "unfree": false,
           "version": "3.31.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1712735478,
+            "narHash": "sha256-EV0bJ+VlG93/4nLYjFy5nvDPP/vB2ZoWYJX2AzI/QHM=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "a48721e9b7a55253eb0a4d79b6806e97f11a9c77",
+            "type": "github"
+          },
+          "fingerprint": "ccdc45283fab60b0b21d81dc8228d35b6f60b33b7e4b8fcf616d97e8606b1299",
+          "url": "github:NixOS/nixpkgs/a48721e9b7a55253eb0a4d79b6806e97f11a9c77"
+        },
+        "priority": 5
+      },
+      "k9s": {
+        "attr-path": [
+          "legacyPackages",
+          "aarch64-darwin",
+          "k9s"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Kubernetes CLI To Manage Your Clusters In Style",
+          "license": "Apache-2.0",
+          "pname": "k9s",
+          "unfree": false,
+          "version": "0.28.2"
         },
         "input": {
           "attrs": {

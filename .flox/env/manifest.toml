@@ -11,6 +11,8 @@ go-task.pkg-path = "go-task"
 kubernetes-helm.pkg-path = "kubernetes-helm"
 _1password.pkg-path = "_1password"
 kubectl.pkg-path = "kubectl"
+k9s.pkg-path = "k9s"
+cilium-cli.pkg-path = "cilium-cli"
 # hello.pkg-path = "hello"
 # nodejs = { version = "^18.4.2", pkg-path = "nodejs_18" }
 
