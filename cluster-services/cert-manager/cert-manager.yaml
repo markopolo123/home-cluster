@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     chart: jetstack
-    targetRevision: 1.14.5
+    targetRevision: v1.14.5
     repoURL: https://charts.jetstack.io
     helm:
       releaseName: cert-manager
