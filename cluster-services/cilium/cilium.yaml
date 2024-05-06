@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     chart: cilium
-    targetRevision: 1.14.0
+    targetRevision: 1.15.0
     repoURL: https://helm.cilium.io/
     helm:
       releaseName: cilium
