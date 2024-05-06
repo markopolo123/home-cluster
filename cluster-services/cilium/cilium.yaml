@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: cilium
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   project: default
   source:
