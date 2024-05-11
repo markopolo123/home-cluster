@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: cert-manager
       values: |
-        installCRDs: false
+        installCRDs: true
         extraArgs:
           - --feature-gates=ExperimentalGatewayAPISupport=true
   destination:
