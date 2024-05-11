@@ -1,3 +1,5 @@
+provider:
+  name: pihole
 extraArgs:
   - --source=gateway-httproute
   - --label-filter=external-dns==yes
