@@ -1,4 +1,4 @@
-extra-args:
+extraArgs:
   - --source=gateway-httproute
   - --label-filter=external-dns==yes
   - --registry=noop
