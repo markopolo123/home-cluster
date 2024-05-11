@@ -6,6 +6,8 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+
 spec:
   project: default
   source:
@@ -14,8 +16,26 @@ spec:
     repoURL: https://helm.cilium.io/
     helm:
       releaseName: cilium
-      valueFiles:
-        - values.yaml
+      values: |
+        operator:
+          replicas: 1
+
+        kubeProxyReplacement: true
+
+        l2announcements:
+          enabled: true
+
+        k8sClientRateLimit:
+          qps: 32
+          burst: 60
+
+        kubeProxyReplacementMode: strict
+
+        k8sServiceHost: "192.168.0.142"
+        k8sServicePort: 6443
+
+        gatewayAPI:
+          enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

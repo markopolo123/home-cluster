@@ -12,8 +12,10 @@ spec:
     repoURL: https://charts.jetstack.io
     helm:
       releaseName: cert-manager
-      valueFiles:
-        - values.yaml
+      values: |
+        installCRDs: false
+        extraArgs:
+          - --feature-gates=ExperimentalGatewayAPISupport=true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cert-manager
