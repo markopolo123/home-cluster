@@ -20,7 +20,7 @@ spec:
       tls:
         mode: Terminate
         certificateRefs:
-          - name: nginx-le-cert
+          - name: wildcard-le-cert
             namespace: default
             kind: Secret
       allowedRoutes:
