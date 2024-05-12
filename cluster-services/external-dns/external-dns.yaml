@@ -16,6 +16,7 @@ spec:
     helm:
       releaseName: external-dns
       values: |
+        logLevel: trace
         registry: noop
         provider: pihole
         policy: upsert-only
