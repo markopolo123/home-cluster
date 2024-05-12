@@ -17,11 +17,11 @@ spec:
       releaseName: external-dns
       values: |
         registry: noop
+        provider: pihole
         policy: upsert-only
         extraArgs:
           - --source=gateway-httproute
           - --label-filter=external-dns==yes
-          - --provider=pihole
         env:
           - name: EXTERNAL_DNS_PIHOLE_SERVER
             valueFrom:
