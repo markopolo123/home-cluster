@@ -28,7 +28,6 @@ spec:
           - gateway-tcproute
           - gateway-udproute
         extraArgs:
-          - --source=gateway-httproute
           - --label-filter=external-dns==yes
         env:
           - name: EXTERNAL_DNS_PIHOLE_SERVER
