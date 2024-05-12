@@ -19,6 +19,20 @@ spec:
         registry: noop
         provider: pihole
         policy: upsert-only
+        rbac:
+          create: true
+          additionalPermissions:
+            - apiGroups: ["gateway.networking.k8s.io"]
+              resources:
+                [
+                  "gateways",
+                  "httproutes",
+                  "grpcroutes",
+                  "tlsroutes",
+                  "tcproutes",
+                  "udproutes",
+                ]
+              verbs: ["get", "watch", "list"]
         extraArgs:
           - --source=gateway-httproute
           - --label-filter=external-dns==yes
