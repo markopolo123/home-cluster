@@ -20,6 +20,12 @@
       },
       "kubernetes-helm": {
         "pkg-path": "kubernetes-helm"
+      },
+      "kustomize": {
+        "pkg-path": "kustomize"
+      },
+      "yq": {
+        "pkg-path": "yq"
       }
     },
     "options": {
@@ -206,6 +212,62 @@
           "pname": "kubernetes-helm",
           "unfree": false,
           "version": "3.13.2"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1712735478,
+            "narHash": "sha256-EV0bJ+VlG93/4nLYjFy5nvDPP/vB2ZoWYJX2AzI/QHM=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "a48721e9b7a55253eb0a4d79b6806e97f11a9c77",
+            "type": "github"
+          },
+          "fingerprint": "ccdc45283fab60b0b21d81dc8228d35b6f60b33b7e4b8fcf616d97e8606b1299",
+          "url": "github:NixOS/nixpkgs/a48721e9b7a55253eb0a4d79b6806e97f11a9c77"
+        },
+        "priority": 5
+      },
+      "kustomize": {
+        "attr-path": [
+          "legacyPackages",
+          "aarch64-darwin",
+          "kustomize"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Customization of kubernetes YAML configurations",
+          "license": "Apache-2.0",
+          "pname": "kustomize",
+          "unfree": false,
+          "version": "5.2.1"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1712735478,
+            "narHash": "sha256-EV0bJ+VlG93/4nLYjFy5nvDPP/vB2ZoWYJX2AzI/QHM=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "a48721e9b7a55253eb0a4d79b6806e97f11a9c77",
+            "type": "github"
+          },
+          "fingerprint": "ccdc45283fab60b0b21d81dc8228d35b6f60b33b7e4b8fcf616d97e8606b1299",
+          "url": "github:NixOS/nixpkgs/a48721e9b7a55253eb0a4d79b6806e97f11a9c77"
+        },
+        "priority": 5
+      },
+      "yq": {
+        "attr-path": [
+          "legacyPackages",
+          "aarch64-darwin",
+          "yq"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents",
+          "license": "Apache-2.0",
+          "pname": "yq",
+          "unfree": false,
+          "version": "3.2.3"
         },
         "input": {
           "attrs": {

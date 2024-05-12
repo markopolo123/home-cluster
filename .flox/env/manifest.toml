@@ -13,6 +13,8 @@ _1password.pkg-path = "_1password"
 kubectl.pkg-path = "kubectl"
 k9s.pkg-path = "k9s"
 cilium-cli.pkg-path = "cilium-cli"
+yq.pkg-path = "yq"
+kustomize.pkg-path = "kustomize"
 # hello.pkg-path = "hello"
 # nodejs = { version = "^18.4.2", pkg-path = "nodejs_18" }
 
