@@ -8,6 +8,8 @@ metadata:
     gateway: my-gateway
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt-prod
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   gatewayClassName: cilium
   listeners:

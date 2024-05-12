@@ -4,6 +4,9 @@ kind: OnePasswordItem
 metadata:
   name: cloudflare-api-token-secret
   namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   itemPath: "vaults/homelab/items/ek57b56kruwql7wxrw4kxxkrky"
 ---
@@ -12,6 +15,9 @@ kind: ClusterIssuer
 metadata:
   name: lets-encrypt-prod
   namespace: cert-manager
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   acme:
     # The ACME server URL
