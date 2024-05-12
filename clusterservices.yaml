@@ -1,15 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: cluster-services
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-    - git:
-        repoURL: https://github.com/markopolo123/home-cluster.git
-        revision: HEAD
-        directories:
-          - path: cluster-services/secrets/*
-          - path: cluster-services/storage/*
+  project: default
+  source:
+    path: cluster-services/
+    repoURL: https://github.com/markopolo123/home-cluster.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

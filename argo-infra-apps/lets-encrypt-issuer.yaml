@@ -1,0 +1,29 @@
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: cert-manager
+spec:
+  itemPath: "vaults/homelab/items/ek57b56kruwql7wxrw4kxxkrky"
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: lets-encrypt-prod
+  namespace: cert-manager
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: le@sharpley.xyz
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: lets-encrypt-prod-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: credential

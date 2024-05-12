@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-argocd-apps
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "git@github.com:markopolo123/home-cluster"
+    targetRevision: HEAD
+    path: "argo-infra-apps/"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: "*"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
