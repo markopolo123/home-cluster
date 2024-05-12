@@ -36,6 +36,12 @@ spec:
 
         gatewayAPI:
           enabled: true
+
+        hubble
+          relay
+            enabled: true
+          ui
+            enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system
