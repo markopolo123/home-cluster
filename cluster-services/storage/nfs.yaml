@@ -15,7 +15,9 @@ spec:
         nfs:
           server: nas.internal.sharpley.xyz
           path: /volume1/k8s-nfs
-          storageClass: nas-nfs
+          storageClass: 
+            name: nas-nfs
+            reclaimPolicy: Retain
   destination:
     server: "https://kubernetes.default.svc"
     namespace: nfs
