@@ -1,0 +1,68 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wakapi
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    chart: wakapi
+    repoURL: https://github.com/markopolo123/wakapi-helm-chart
+    path: src/wakapi
+    targetRevision: main
+    helm:
+      releaseName: wakapi
+      values: |
+        here: here
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wakapi-pvc
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nas-nfs
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: wakapi-route
+  namespace: apps
+  labels:
+    gateway: my-gateway
+    external-dns: "yes"
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  parentRefs:
+    - name: my-gateway
+      namespace: default
+      sectionName: https-listener
+  hostnames:
+    - "wakapi.internal.sharpley.xyz"
+  rules:
+    - backendRefs:
+        - name: wakapi
+          port: 80
