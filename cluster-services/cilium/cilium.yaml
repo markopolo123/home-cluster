@@ -37,10 +37,10 @@ spec:
         gatewayAPI:
           enabled: true
 
-        hubble
-          relay
+        hubble:
+          relay:
             enabled: true
-          ui
+          ui:
             enabled: true
   destination:
     server: "https://kubernetes.default.svc"
