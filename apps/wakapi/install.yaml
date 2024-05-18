@@ -10,14 +10,18 @@ metadata:
 spec:
   project: default
   source:
-    chart: wakapi
-    repoURL: https://github.com/markopolo123/wakapi-helm-chart
+    repoURL: https://github.com/markopolo123/wakapi-helm-chart.git
     path: src/wakapi
-    targetRevision: main
+    targetRevision: HEAD
     helm:
       releaseName: wakapi
       values: |
-        here: here
+        security:
+          password_salt: # CHANGE !
+        exposeMetrics: false
+        persistence:
+          enabled: true
+          existingClaim: wakapi-pvc
   destination:
     server: "https://kubernetes.default.svc"
     namespace: apps
@@ -25,13 +29,12 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: wakapi-pvc
+  namespace: apps
   annotations:
     argocd.argoproj.io/hook: PreSync
     argocd.argoproj.io/sync-wave: "-1"
@@ -42,7 +45,6 @@ spec:
   resources:
     requests:
       storage: 2Gi
-
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
@@ -66,3 +68,14 @@ spec:
     - backendRefs:
         - name: wakapi
           port: 80
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: wakapi
+  namespace: apps
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  itemPath: "vaults/homelab/items/iq24thct4zmwvzeqrmmdpij22u"
