@@ -14,14 +14,3 @@ data:
       - CiliumIdentity
       clusters:
       - "*"
-    - apiGroups:
-      - cert-manager.io
-      kinds:
-      - CertificateRequest
-      - Certificate
-      - Challenge
-      - ClusterIssuer
-      - Issuer
-      - Order
-      clusters:
-      - "*"

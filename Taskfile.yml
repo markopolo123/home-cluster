@@ -8,6 +8,7 @@ tasks:
       - kubectl create namespace argocd
       - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
       - kubectl apply -f argo-cd-cm.yaml
+      - kubectl apply -f argo-cd-params-cm.yaml
     silent: true
   bootstrap-cluster:
     cmds:
