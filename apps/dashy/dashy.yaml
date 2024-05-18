@@ -1,0 +1,51 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: dashy-hello-route
+  labels:
+    gateway: my-gateway
+    external-dns: "yes"
+spec:
+  parentRefs:
+    - name: my-gateway
+      namespace: default
+      sectionName: https-listener
+  hostnames:
+    - "dashy.internal.sharpley.xyz"
+  rules:
+    - backendRefs:
+        - name: dashy-hello-service
+          port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashy-hello-service
+spec:
+  selector:
+    app: dashy-hello
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dashy-hello
+  labels:
+    app: dashy-hello
+spec:
+  containers:
+    - name: dashy
+      image: lissy93/dashy:2.1.1
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: nfs-volume
+          mountPath: /app/public
+  volumes:
+    - name: nfs-volume
+      persistentVolumeClaim:
+        claimName: dashy-pvc

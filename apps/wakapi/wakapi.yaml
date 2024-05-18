@@ -30,22 +30,6 @@ spec:
       prune: true
       selfHeal: true
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: wakapi-pvc
-  namespace: apps
-  annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: nas-nfs
-  resources:
-    requests:
-      storage: 2Gi
----
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
