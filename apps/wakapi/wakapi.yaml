@@ -16,9 +16,7 @@ spec:
     helm:
       releaseName: wakapi
       values: |
-        security:
-          password_salt: # CHANGE !
-        exposeMetrics: false
+        exposeMetrics: true
         persistence:
           enabled: true
           existingClaim: wakapi-pvc
