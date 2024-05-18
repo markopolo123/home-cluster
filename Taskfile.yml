@@ -13,4 +13,5 @@ tasks:
     cmds:
       - kubectl apply -f clusterservices.yaml
       - kubectl apply -f infra-apps.yaml
+      - kubectl apply -f apps.yaml
     silent: true
