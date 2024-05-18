@@ -6,12 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "git@github.com:markopolo123/home-cluster"
-    targetRevision: HEAD
     path: "argo-infra-apps/"
+    repoURL: https://github.com/markopolo123/home-cluster.git
+    targetRevision: HEAD
+    directory:
+      recurse: true
   destination:
     server: "https://kubernetes.default.svc"
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
