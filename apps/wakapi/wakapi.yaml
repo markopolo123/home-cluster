@@ -16,10 +16,58 @@ spec:
     helm:
       releaseName: wakapi
       values: |
+        replicaCount: 1
         exposeMetrics: true
         persistence:
           enabled: true
           existingClaim: wakapi-pvc
+        ingress:
+          enabled: false
+        wakapi_config:
+          env: production
+
+          server:
+            listen_ipv4: "0.0.0.0"
+            listen_ipv6:
+            tls_cert_path:
+            tls_key_path:
+            port: 3000
+            base_path: /
+          app:
+            aggregation_time: '02:15' # time at which to run daily aggregation batch jobs
+            inactive_days: 7 # time of previous days within a user must have logged in to be considered active
+            custom_languages:
+              vue: Vue
+              jsx: JSX
+
+          db:
+            host:
+            port:
+            user:
+            password:
+            name: /data/wakapi_db.db # database name for mysql / postgres or file path for sqlite (e.g. /tmp/wakapi.db)
+            dialect: sqlite3 # mysql, postgres, sqlite3
+            charset: utf8mb4 # only used for mysql connections
+            max_conn: 2 # maximum number of concurrent connections to maintain
+            ssl: false # whether to use tls for db connection (must be true for cockroachdb) (ignored for mysql and sqlite)
+
+          security:
+            password_salt: # CHANGE !
+            insecure_cookies: false # You need to set this to 'true' when on localhost
+            cookie_max_age: 172800
+            allow_signup: true
+            expose_metrics: false
+
+          mail:
+            enabled: false
+            sender: "noreply@wakapi.dev"
+            provider: "smtp"
+            smtp:
+              host: "smtp.example.com"
+              port: 465
+              username: "your_username"
+              password: "your_password"
+              tls: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: apps
